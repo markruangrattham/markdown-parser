@@ -11,22 +11,27 @@ public class MarkdownParse {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then read link upto next )
         int closeParen=0;
-        for(int currentIndex = 0;currentIndex<markdown.length(); currentIndex+=closeParen){
-        
-
-            int openBracket=markdown.indexOf("[", currentIndex);
-            int closeBracket=markdown.indexOf("]", openBracket);
-            int openParen=markdown.indexOf("(", closeBracket);
-            closeParen=markdown.indexOf(")", openParen);
-            if(closeParen-openParen<=1||openParen-closeBracket!=1||closeBracket-openBracket==1){
-            }
-            else{   
-                toReturn.add(markdown.substring(openParen + 1, closeParen));
-            }
-            
+        if(markdown.length()<4){
+            return toReturn;
         }
+        else{
 
-        return toReturn;
+        
+            for(int currentIndex = 0;currentIndex<markdown.length(); currentIndex+=closeParen){
+            
+                int openBracket=markdown.indexOf("[", currentIndex);
+                int closeBracket=markdown.indexOf("]", openBracket);
+                int openParen=markdown.indexOf("(", closeBracket);
+                closeParen=markdown.indexOf(")", openParen);
+                if(closeParen-openParen<=1||openParen-closeBracket!=1||closeBracket-openBracket==1){
+                }
+                else{   
+                    toReturn.add(markdown.substring(openParen + 1, closeParen));
+                }
+                
+            }
+            return toReturn;
+        }
     }
 
     public static void main(String[] args) throws IOException {
