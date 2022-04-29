@@ -1,1 +1,1 @@
-[test (link)this shouldn't as a link ](google.com)
+[test (link) this shouldn't as a link ](google.com)

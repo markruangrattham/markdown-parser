@@ -26,26 +26,56 @@ public class MarkdownParse {
                 int closeBracket=markdown.indexOf("]", openBracket);
                 int openParen=markdown.indexOf("(", closeBracket);
                 closeParen=markdown.indexOf(")", openParen);
-                if(closeParen-openParen<=1||
-                openParen-closeBracket!=1||
-                closeBracket-openBracket==1){
+                
+
+                if(openBracket==-1){
                 }
                 else{
-                    int checker = markdown.indexOf("[");
-                    String mark = "!";
-                    Character check = mark.charAt(0);
-                    if(markdown.charAt(checker-1)==check){
-
-                    }
-                    else{
-                        toReturn.add(markdown.substring(openParen + 1, closeParen));
-                    }
                     
+                    if(closeParen-openParen<=1||
+                    openParen-closeBracket!=1||
+                    closeBracket-openBracket==1){
+                    }
+
+                    else{
+                        int checker = markdown.indexOf("[");
+                        if(checker<=-1){
+                        }
+
+                        else{
+
+                        String mark = "!";
+                        Character check = mark.charAt(0);
+
+                        if(checker==0){
+                            if(markdown.charAt(checker)==check){
+                            }
+                            else{
+                            toReturn.add(markdown.substring(openParen + 1, closeParen));
+                            }
+                        }
+                        if(checker>=1){
+                            if(markdown.charAt(checker-1)==check){
+                            }
+                            else{
+                                toReturn.add(markdown.substring(openParen + 1, closeParen));
+                            }
+                        }
+        
+    
+                    }
                 }
             }
+            
         }
-        return toReturn;
     }
+    return toReturn;
+}
+    
+        
+
+        
+
 
     public static void main(String[] args) throws IOException {
         Path fileName = Path.of(args[0]);
