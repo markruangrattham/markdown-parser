@@ -15,7 +15,7 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         MarkdownParse check = new MarkdownParse();
         ArrayList<String> links = check.getLinks(content);
-        String[] actual = {};
+        String[] actual = {"google.com"};
         assertArrayEquals(actual, links.toArray());
     
         
